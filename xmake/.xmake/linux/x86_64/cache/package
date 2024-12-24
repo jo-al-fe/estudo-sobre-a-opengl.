@@ -1,0 +1,96 @@
+{
+    glfw = {
+        version = "3.4",
+        links = {
+            "glfw3",
+            "OpenGL",
+            "Xrandr",
+            "Xinerama",
+            "Xcursor",
+            "Xrender",
+            "X11",
+            "Xi",
+            "Xfixes",
+            "Xext",
+            "xcb",
+            "Xau",
+            "Xdmcp"
+        },
+        defines = "GLFW_INCLUDE_NONE",
+        envs = {
+            SSL_CERT_DIR = {
+                "/home/joao/.xmake/packages/c/ca-certificates/20240207/248ec2a883cf403bad9ac86ef1158760"
+            },
+            SSL_CERT_FILE = {
+                "/home/joao/.xmake/packages/c/ca-certificates/20240207/248ec2a883cf403bad9ac86ef1158760/cacert.pem"
+            },
+            PYTHONPATH = {
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/lib/python3.13/site-packages"
+            },
+            PATH = {
+                "/home/joao/.xmake/packages/c/cmake/3.30.2/924bf70cd2964eea80fdac45c84f12e4/bin",
+                "/home/joao/.xmake/packages/p/pkg-config/0.29.2/a0aba256d7674c1bbee15f0ee1534e92/bin",
+                "/home/joao/.xmake/packages/p/pkg-config/0.29.2/a0aba256d7674c1bbee15f0ee1534e92/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/Scripts"
+            },
+            LD_LIBRARY_PATH = {
+                "/home/joao/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28/lib",
+                "/home/joao/.xmake/packages/c/cmake/3.30.2/924bf70cd2964eea80fdac45c84f12e4/lib",
+                "/home/joao/.xmake/packages/l/libx11/1.8.7/380a1842db954612a3e602b04bf6d53b/lib"
+            }
+        },
+        __requirestr = "glfw",
+        libfiles = {
+            "/home/joao/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28/lib/libglfw3.a",
+            "/usr/lib/x86_64-linux-gnu/libOpenGL.so"
+        },
+        installdir = "/home/joao/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28",
+        static = true,
+        syslinks = {
+            "dl",
+            "pthread"
+        },
+        license = "zlib",
+        sysincludedirs = {
+            "/home/joao/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28/include",
+            "/usr/include/X11/dri"
+        },
+        __enabled = true,
+        linkdirs = "/home/joao/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28/lib"
+    },
+    glad = {
+        version = "v0.1.36",
+        __enabled = true,
+        linkdirs = "/home/joao/.xmake/packages/g/glad/v0.1.36/f31cd39a27f14bdc8dd8413392e1ee53/lib",
+        syslinks = "dl",
+        libfiles = "/home/joao/.xmake/packages/g/glad/v0.1.36/f31cd39a27f14bdc8dd8413392e1ee53/lib/libglad.a",
+        __requirestr = "glad",
+        static = true,
+        links = "glad",
+        license = "MIT",
+        sysincludedirs = "/home/joao/.xmake/packages/g/glad/v0.1.36/f31cd39a27f14bdc8dd8413392e1ee53/include",
+        installdir = "/home/joao/.xmake/packages/g/glad/v0.1.36/f31cd39a27f14bdc8dd8413392e1ee53",
+        envs = {
+            SSL_CERT_DIR = {
+                "/home/joao/.xmake/packages/c/ca-certificates/20240207/248ec2a883cf403bad9ac86ef1158760"
+            },
+            SSL_CERT_FILE = {
+                "/home/joao/.xmake/packages/c/ca-certificates/20240207/248ec2a883cf403bad9ac86ef1158760/cacert.pem"
+            },
+            PYTHONPATH = {
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/lib/python3.13/site-packages"
+            },
+            PATH = {
+                "/home/joao/.xmake/packages/c/cmake/3.30.2/924bf70cd2964eea80fdac45c84f12e4/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/bin",
+                "/home/joao/.xmake/packages/p/python/3.13.0/b7dd8beff26a4c82bc950462214dc4e3/Scripts"
+            },
+            LD_LIBRARY_PATH = {
+                "/home/joao/.xmake/packages/c/cmake/3.30.2/924bf70cd2964eea80fdac45c84f12e4/lib"
+            }
+        }
+    }
+}
