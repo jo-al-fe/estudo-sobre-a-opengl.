@@ -15,6 +15,6 @@
     files = {
         "../config/main.cpp"
     },
-    depfiles_gcc = "main.o: ../config/main.cpp ../config/glad/glad.h  ../config/glad/khrplatform.h ../config/GLFW/glfw3.h\
+    depfiles_gcc = "main.o: ../config/main.cpp ../config/glad/glad.h  ../config/glad/khrplatform.h ../config/GLFW/glfw3.h  ../config/lib/shader.h ../config/lib/../glad/glad.h\
 "
 }

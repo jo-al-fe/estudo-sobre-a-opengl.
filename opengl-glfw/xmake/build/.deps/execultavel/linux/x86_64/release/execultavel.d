@@ -1,4 +1,7 @@
 {
+    files = {
+        "build/.objs/execultavel/linux/x86_64/release/__/config/main.cpp.o"
+    },
     values = {
         "/usr/bin/g++",
         {
@@ -22,8 +25,5 @@
             "-lpthread",
             "-ldl"
         }
-    },
-    files = {
-        "build/.objs/execultavel/linux/x86_64/release/__/config/main.cpp.o"
     }
 }
