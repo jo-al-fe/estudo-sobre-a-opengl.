@@ -1,4 +1,9 @@
 {
+    depfiles_gcc = "main.o: ../config/main.cpp ../config/glad/glad.h  ../config/glad/khrplatform.h\
+",
+    files = {
+        "../config/main.cpp"
+    },
     values = {
         "/usr/bin/gcc",
         {
@@ -11,10 +16,5 @@
             "-isystem",
             "/home/joao/.xmake/packages/g/glad/v0.1.36/f31cd39a27f14bdc8dd8413392e1ee53/include"
         }
-    },
-    files = {
-        "../config/main.cpp"
-    },
-    depfiles_gcc = "main.o: ../config/main.cpp ../config/glad/glad.h  ../config/glad/khrplatform.h ../config/GLFW/glfw3.h  ../config/lib/shader.h ../config/lib/../glad/glad.h\
-"
+    }
 }

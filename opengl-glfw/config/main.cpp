@@ -1,52 +1,62 @@
 #include"glad/glad.h"
-#include"GLFW/glfw3.h"
-#include"lib/shader.h"
+#include<GLFW/glfw3.h>
 #include<iostream>
+#include<fstream>
+#include<string>
+#include<sstream>
+
+//comfigurando o shader
+std::string readLine(const char* caminho_arquivo){
+    std::string codigoShader;
+    std::ifstream arquivoShader;
+    arquivoShader.exceptions(std::ifstream::failbit | std::ifstream::badbit);
+    try{
+        arquivoShader.open(caminho_arquivo);
+        std::stringstream streamShader;
+        streamShader<<arquivoShader.rdbuf();
+        arquivoShader.close();
+        codigoShader=streamShader.str();
+    }catch(std::ifstream::failure e){
+        std::cout<<"erro::leitura do arquivo"<<caminho_arquivo<<'\n';
+    }
+    return codigoShader;
+}
 int main(){
-    int is,ic;
-    char r[512];
+    //inicia o glfw
     glfwInit();
     GLFWwindow* janela=glfwCreateWindow(400,400,"janela",NULL,NULL);
     glfwMakeContextCurrent(janela);
+    //inicia o glad
     gladLoadGLLoader((GLADloadproc)glfwGetProcAddress);
-    //cordenadas do verteces
-     Shader ourShader("3.3.shader.vs", "3.3.shader.fs");
-    float verts[]={
-        0.0f,0.5f,0.0f,  1.0f,0.0f,0.0f, //top direita
-        -0.5f,-0.5f,0.0f, 1.0f,0.0f,0.0f,//direita
-        0.5f,-0.5,0.0f,   1.0f,0.0f,0.0f//esqueda
-    };
-    
-    //configura são do trianglo
+    //caminho para vertex.glsl e fragment.glsl
+    std::string codigoVertexShader=readLine("vertex.glsl");
+    std::string codigoFragmentShader=readLine("fragment.glsl");
+    const char* vShaderCode=codigoVertexShader.c_str();
+    const char* fShaderCode=codigoFragmentShader.c_str();
+    //configurando o vertexShader
+    unsigned int vertexShader=glCreateShader(GL_VERTEX_SHADER);
+    glShaderSource(vertexShader, 1, &vShaderCode, NULL);
+    glCompileShader(vertexShader);
+    //.. o fragmentShader
+    unsigned int fragmentShader=glCreateShader(GL_FRAGMENT_SHADER);
+    glShaderSource(fragmentShader, 1, &fShaderCode, NULL);
+    glCompileShader(fragmentShader);
+    //.. o shaderProgama
+    unsigned int shaderProgama=glCreateProgram();
+    glAttachShader(shaderProgama, vertexShader);
+    glAttachShader(shaderProgama, fragmentShader);
+    glLinkProgram(shaderProgama);
 
-    unsigned int VBO, VAO;
-    glGenVertexArrays(1, &VAO);
-    glGenBuffers(1, &VBO);
-    // bind the Vertex Array Object first, then bind and set vertex buffer(s), and then configure vertex attributes(s).
-    glBindVertexArray(VAO);
-
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(verts), verts, GL_STATIC_DRAW);
-
-    // position attribute
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
-    // color attribute
-    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
-    glEnableVertexAttribArray(1);
-    
+    glDeleteShader(vertexShader);
+    glDeleteShader(fragmentShader);
     while(!glfwWindowShouldClose(janela)){
-        glClearColor(0.0f, 0.0f, 1.0f, 1.0f);
+        glClearColor(0.0f,0.0f,1.0f,1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
-        ourShader.use();
-        glBindVertexArray(VAO);
-        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glUseProgram(shaderProgama);
         glfwSwapBuffers(janela);
         glfwPollEvents();
     }
-    glDeleteVertexArrays(1, &VAO);
-    glDeleteBuffers(1, &VBO);
+    glDeleteProgram(shaderProgama);
     glfwTerminate();
     return 0;
 }
